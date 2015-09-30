@@ -1,0 +1,53 @@
+#include <stdio.h>
+
+void swap(int *xp, int *yp)
+{
+	int temp;
+	temp=*xp;
+	*xp=*yp;
+	*yp=temp;
+}
+
+int partition(int array[], int l ,int h)
+{
+	int x=array[h];
+	int i=l-1;
+	int j;
+	for(j=l;j<=h-1;j++)
+	{
+		if(array[j]<=x)
+		{
+			i++;
+			swap(&array[i],&array[j]);
+		}
+		
+	}
+	swap(&array[i+1],&array[h]);
+	return (i+1);
+}
+
+void quickSort(int array[],int l, int h)
+{
+	if(l<h)
+	{
+		int p=partition(array,l,h);
+		quickSort(array,l,p-1);
+		quickSort(array,p+1,h);
+		
+	}
+	
+}
+
+int main(void) {
+	
+	int array[]={34,65,1,2,9,87,45,43443,6,3,1,6};
+int size=sizeof(array)/sizeof(array[0]);
+
+quickSort(array,0,size-1);
+	// your code goes here
+	
+	int i;
+	for(i=0;i<size;i++)
+	printf("%d \t",array[i]);
+	return 0;
+}
