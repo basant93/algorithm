@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int binarySearch(int arr[], int l, int r, int x)
+{
+	while(l<=r)
+	{
+		int m=(l+r)/2;
+
+		if(arr[m]==x)
+		return m;
+		if(arr[m]<x)
+		l=m+1;
+		else
+		r=m-1;
+
+	}
+
+return -1;
+}
+
+
+int main(void) {
+
+int arr[]={3,4,6,7,89,456};
+
+int size=sizeof(arr)/sizeof(arr[0]);
+
+int res=binarySearch(arr,0,size-1,89);
+if(res!=-1)	
+printf("element found at %d",res);
+else
+printf("element not found");
+	
+	// your code goes here
+	return 0;
+}
