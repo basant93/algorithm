@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+void findKClosest(int array[], int n,int k)
+{
+	int i,prev=0,next;
+	for(i=0;i<n;i++)
+	{
+		if(array[i]>=35)
+		{
+			break;
+			
+		}
+		prev=i;
+		
+	}
+	next=i+1;
+	
+	cout<<"\n";
+	for(i=0;i<k;i++)
+	{
+		if(array[prev]>array[next])
+		{
+			cout<<array[prev]<<"\t";
+			prev--;
+		}
+		else if(array[prev]<array[next])
+		{
+			cout<<array[next]<<"\t";
+			next++;
+		}
+		else
+		{
+			cout<<array[prev]<<"\t";
+		
+			prev--;
+			next++;
+		}
+	}
+		
+	
+	
+}
+
+int main() {
+	
+	int array[]={12, 16, 22, 30, 35, 39, 42, 
+               45, 48, 50, 53, 55, 56};
+	int size = sizeof(array)/sizeof(array[0]);
+	
+	findKClosest(array,size,4);
+	// your code goes here
+	return 0;
+}
