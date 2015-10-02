@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int low, int high,int x)
+{
+	if(low<=high)
+	{
+		int mid=low + (high-low)/2;
+		
+		if(arr[mid]==x)
+		return mid;
+		if(arr[mid+1]==x && mid<high)
+		return mid+1;
+		else if(arr[mid-1]==x && low <mid)
+		return mid-1;
+		
+		if(arr[mid]>x)
+		return binarySearch(arr,mid+2,high,x);
+		else
+		return binarySearch(arr,low,mid-2,x);
+	}
+	
+	return -1;
+}
+
+int main() {
+	int arr[] = {3, 2, 10, 4, 40};
+   int size = sizeof(arr)/ sizeof(arr[0]);
+   int x = 4;
+   int result=binarySearch(arr,0,size-1,x);
+   if(result==-1)
+   cout<<"element is not present";
+   else
+   cout<<"element is present at index at "<<result;
+
+	// your code goes here
+	return 0;
+}
