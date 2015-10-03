@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+void binaryDigit(unsigned int no,int bitsOfInt[])
+{
+	
+	int i;
+	
+	i=31;
+	while(no>0)
+	{
+		bitsOfInt[i]=no%2;
+		no=no/2;
+		i--;
+		
+	}
+	
+
+}
+
+int main()
+{
+	int x=9;
+int bitsOfInt[32]={};
+	binaryDigit(x,bitsOfInt);
+
+	int j;
+	for(j=0;j<32;j++)
+	printf("%d",bitsOfInt[j]);
+	
+	return 0;
+}
