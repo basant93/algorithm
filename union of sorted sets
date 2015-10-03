@@ -1,0 +1,67 @@
+#include<stdio.h>
+
+
+void Union(int arr1[],int arr2[],int m,int n, int unionSet[])
+{
+	int i=0,j=0,k=0;
+	while(i<m && j<n)
+	{
+		
+		if(arr1[i]<arr2[j])
+		{
+			unionSet[k++]=arr1[i];
+			i++;
+			
+		}
+		else if(arr1[i]>arr2[j])
+		{
+			unionSet[k++]=arr2[j];
+			j++;
+			
+		}
+		else
+		{
+			unionSet[k++]=arr1[i];
+			i++;
+			j++;
+			
+		}
+	}
+	
+	while(i<m)
+	{
+		unionSet[k++]=arr1[i];
+		i++;	
+	}
+	while(j<n)
+	{
+		unionSet[k++]=arr2[j];
+		j++;
+			
+		
+	}
+}
+
+
+int main()
+{
+	int i;
+int arr1[]={1,3,5,6,7,9};
+int arr2[]={2,3,4,5,7,10};
+int m =sizeof(arr1)/sizeof(arr1[0]);
+int n =sizeof(arr2)/sizeof(arr2[0]);
+
+
+int unionSet[20]={};
+Union(arr1,arr2,m,n,unionSet);
+
+int size=sizeof(unionSet)/sizeof(unionSet[0]);
+
+
+for(i=0;i<size;i++)
+{
+	printf("%d \t",unionSet[i]);
+	
+}
+return 0;	
+}
