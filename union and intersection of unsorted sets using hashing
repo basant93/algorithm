@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	
+	int hashing[100];
+	int Union[100],Intersect[100];
+	int x=0,y=0;
+	
+	int i,j;
+	int arr1[]={32,4,5,1,90,6};
+	int arr2[]={4,5,6,34,78};
+	int m=sizeof(arr1)/sizeof(arr1[0]);
+	int n=sizeof(arr2)/sizeof(arr2[0]);
+	
+	memset(hashing,0,sizeof(hashing));
+	
+	for(i=0;i<m;i++)
+	{
+		hashing[arr1[i]]++;
+		if(hashing[arr1[i]]==1)
+		{
+			Union[x]=arr1[i];
+			x++;
+			
+		}
+		
+	}
+	
+	for(i=0;i<n;i++)
+	{
+		if(hashing[arr2[i]]==0)
+		{
+			Union[x]=arr2[i];
+			x++;
+			
+		}
+		
+	}
+	
+	for(j=0;j<n;j++)
+	{
+		if(hashing[arr2[j]]>0)
+		{ 
+			Intersect[y]=arr2[j];
+			y++;
+		}
+	}
+	
+	printf("union of sets \n");
+	for(i=0;i<x;i++)
+	printf("%d \t",Union[i]);
+	
+	
+	printf("Intersection of sets \n");
+	for(i=0;i<y;i++)
+	printf("%d \t",Intersect[i]);
+	
+	// your code goes here
+	return 0;
+}
