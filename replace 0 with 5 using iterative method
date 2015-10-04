@@ -1,0 +1,27 @@
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+int num, tmp, out, digit;
+
+cin >> num;
+out = 0;
+tmp = 1;
+while (num) {
+digit = num % 10;
+if (digit == 0) {
+out = out + 5 * tmp;
+} else {
+out = out + digit * tmp;
+}
+tmp = tmp * 10;
+num = num / 10;
+}
+cout << out << endl;
+
+return 0;
+}
