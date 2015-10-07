@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node
+{
+	int data;
+	struct node *link;	
+};
+
+map<int ,int>m;
+void push(struct node **q,int num)
+{
+	struct node *temp ;
+	temp = (node *)malloc(sizeof(struct node));
+	temp->link = (*q);
+	temp->data = num;
+	(*q)=temp;
+}
+void printlist(struct node *q)
+{
+	struct node *temp =q;
+	while(temp!=NULL)
+	{
+		cout<<temp->data<<" ";
+		temp= temp->link;
+	}
+}
+
+void solve(struct node *q)
+{
+	struct node *temp=q,*prev=NULL,*next_next;
+	while(temp!=NULL)	
+	{
+		if(m[temp->data])
+		{
+			prev->link = temp->link;
+			next_next=temp;
+			temp=temp->link;
+			free(next_next);
+			continue;
+		}
+		prev = temp;
+		m[temp->data]=1;
+		temp = temp->link;
+	}
+}
+
+int main()
+{
+	struct node *start = NULL;
+ 
+  /* The constructed linked list is:
+   10->12->11->11->12->11->10*/
+  push(&start, 10);
+  push(&start, 11);
+  push(&start, 12);
+  push(&start, 11);
+  push(&start, 11);
+  push(&start, 12);
+  push(&start, 10);
+ 
+ printlist(start);
+ solve(start);
+ cout<<endl;
+ printlist(start);
+ 
+	return 0;
+}
